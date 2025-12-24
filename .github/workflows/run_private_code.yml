@@ -1,6 +1,11 @@
 name: run-private-code
 
 on:
+  schedule:
+    - cron: "0 23 * * *"   # chạy 10h sáng 
+    - cron: "0 5 * * *"   # chạy 4h chiều 
+    - cron: "0 11 * * *"   # chạy 10h tối 
+
  
   workflow_dispatch: {}
 
