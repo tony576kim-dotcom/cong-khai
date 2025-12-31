@@ -169,6 +169,8 @@ jobs:
           python -m pip install "openai-whisper==20231117"
           # loc nhac
           python -m pip install -U demucs
+          # loc banner qr
+          python -m pip install opencv-python-headless
           # Kiểm tra import (dùng python -c để tránh lỗi YAML here-doc)
           python -c "import sys; import whisper, torch, torchaudio; print('Whisper/Torch OK:', whisper.__version__, torch.__version__)"
 
