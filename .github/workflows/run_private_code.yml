@@ -1,9 +1,9 @@
 name: run-private-code
 
 on:
-   
-
- 
+  
+    
+    
   workflow_dispatch: {}
 
 
@@ -22,10 +22,17 @@ jobs:
       YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
       YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
 
-      # chon thumb tieu de
-      SEQ_BASE_RUN: "12"
-      TITLE_START: "12"
-      THUMB_START: "12"
+      # chon thumb tieude bat dau
+      SEQ_BASE_RUN: "32"
+      TITLE_START: "1"
+      THUMB_START: "19"
+
+      # công tắt chọn poll hoặc cloudflare
+      IMG_PROVIDER: cloudflare
+      CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+      CF_API_TOKEN:  ${{ secrets.CF_API_TOKEN }}
+      CF_MODEL: "@cf/black-forest-labs/flux-1-schnell"
+      CF_STEPS: "8"
 
     steps:
       - name: Checkout wrapper (repo PUBLIC)
@@ -164,8 +171,6 @@ jobs:
           python -m pip install "torch==2.3.1" "torchaudio==2.3.1" --index-url https://download.pytorch.org/whl/cpu
           # Whisper (gói đúng tên: openai-whisper)
           python -m pip install "openai-whisper==20231117"
-          # loc nhac
-          python -m pip install -U demucs
           # loc banner qr
           python -m pip install opencv-python-headless
           # Kiểm tra import (dùng python -c để tránh lỗi YAML here-doc)
